@@ -1,68 +1,120 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  /* primary colors */
+  --blue950: hsl(213, 96%, 18%);
+  --purple600: hsl(243, 100%, 62%);
+  --blue300: hsl(228, 100%, 84%);
+  --blue200: hsl(206, 94%, 87%);
+  --red500: hsl(354, 84%, 57%);
+
+  /* nautral colors */
+  --grey500: hsl(231, 11%, 63%);
+  --purple200: hsl(229, 24%, 87%);
+  --blue100: hsl(218, 100%, 97%);
+  --blue50: hsl(231, 100%, 99%);
+  --white: hsl(0, 100%, 100%);
+
+  /* fonts */
+  --ff-ububtu: "Ubuntu", sans-serif;
+  --fs-400: 1rem;
+}
+
+/* ------------------- */
+/* Reset               */
+/* ------------------- */
+/* Box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Reset margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+  margin: 0; 
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
+/* set up the body */
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+  font-family: var(--ff-ububtu);
+  font-size: var(--fs-400);
+  color: var(--blue950);
+  background-color: var(--blue100);
+  line-height: 1.5;
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* make images easier to work with */
+img,
+picutre {
+  max-width: 100%;
+  display: block;
+}
+
+/* make form elements easier to work with */
+input,
+button,
+textarea,
+select {
+  font: inherit;
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  border: none;
+  background-color: transparent;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* ------------------- */
+/* Components          */
+/* ------------------- */
+.stepButton {
+  color: var(--white);
+  height: 3em;
+  aspect-ratio: 1;
+  border: solid 2px var(--white);
+  border-radius: 50%;
+  margin-top: 3rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.stepButton.active {
+  color: var(--blue950);
+  background-color: var(--blue200);
+}
+
+.navigationSteps {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 240px;
+  background-image: url(../public/images/bg-sidebar-mobile.svg);
+  background-size: contain;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+
+.b {
+  border: solid 1px red;
+}
+
+@media (min-width: 525px) {
+  
 }
