@@ -111,6 +111,60 @@ button {
   background-repeat: no-repeat;
 }
 
+.nextButton {
+  background-color: var(--blue950);
+  color: var(--blue100);
+  border-radius: .25rem;
+  padding: 1rem;
+  float: right;
+  margin: 1rem 2rem;
+}
+
+/* ------------------- */
+/* Layouts             */
+/* ------------------- */
+.personalInfo {
+  position: relative;
+  top: -7.5rem;
+  max-width: 490px;
+  width: 90%;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+  border-radius: 1rem;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.personalInfo h1 {
+  font-weight: 700;
+}
+
+.personalInfo p {
+  color: var(--grey500);
+  font-size: 1.125rem;
+}
+
+.personalInfo form {
+  display: flex;
+  flex-direction: column;
+}
+
+.personalInfo form input {
+  margin-bottom: 1rem;
+  line-height: 2rem;
+  padding: .5rem 1rem;
+  border-radius: 0.25rem;
+  border: solid 1px var(--grey500)
+}
+
+.next-button-container {
+  background-color: var(--white);
+  width: 100%;
+  overflow: hidden;
+}
+
 .b {
   border: solid 1px red;
 }

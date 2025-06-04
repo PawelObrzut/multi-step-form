@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import StepButton from './components/StepButton'
+import Step1 from './components/Step1';
 
 function App() {
   const [activeStep, setActiveStep] = useState<number>(1);
@@ -18,6 +19,21 @@ function App() {
           ))
         }
       </nav>
+        {
+          (() => {
+            switch (activeStep) {
+              case 1:
+                return <Step1 />
+              // case 2:
+              //   return <Step2 />
+              default:
+                return null
+            }
+          })()
+        }
+      <section className='next-button-container'>
+        <button className='nextButton'>Next Step</button>
+      </section>
     </>
   )
 }
