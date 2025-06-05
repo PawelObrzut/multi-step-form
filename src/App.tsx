@@ -18,6 +18,8 @@ function App() {
   } = useForm<Inputs>();
   
   const submitForm = (data: Inputs) => {
+    //TODO: create a state object variable to store all steps information.
+    //? does a user prefer to have a form cleared when advancing to the next step?
     console.log(data.name)
     console.log(data.email)
     console.log(data.phoneNumber)
@@ -36,9 +38,9 @@ function App() {
           ))
         }
       </nav>
-      <main className='personalInfo'>
-        <form onSubmit={handleSubmit(submitForm)}>
-          <section className='formInputFields'>
+      <main className=''>
+        <form onSubmit={handleSubmit(submitForm)} className='multiStepForm'>
+          <section className='formBody'>
           {(() => {
             switch (activeStep) {
               case 1:
@@ -50,7 +52,7 @@ function App() {
                 }
               })()}
           </section>
-          <section className='next-button-container b'>
+          <section className='next-button-container'>
             <button type='submit' className='nextButton'>Next Step</button>
           </section>
         </form>

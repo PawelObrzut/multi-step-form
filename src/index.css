@@ -137,7 +137,17 @@ input {
 /* ------------------- */
 /* Layouts             */
 /* ------------------- */
-.personalInfo {
+.multiStepForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.formBody {
+  display: flex;
+  flex-direction: column;
+}
+
+.formBody {
   position: relative;
   top: -7.5rem;
   max-width: 490px;
@@ -148,32 +158,28 @@ input {
   background-color: var(--white);
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+
 }
 
-.personalInfo h1 {
+.formBody h1 {
   font-weight: 700;
 }
 
-.personalInfo p {
+.formBody p {
   color: var(--grey500);
   font-size: 1.125rem;
   margin-bottom: 1rem;
 }
 
-.formInputFields {
-  display: flex;
-  flex-direction: column;
-}
 
-.personalInfo form input {
+.formBody input {
   margin-bottom: 1rem;
   line-height: 2rem;
   padding: .5rem 1rem;
   border-radius: 0.25rem;
 }
 
-.personalInfo form input:focus {
+.formBody input:focus {
   border: var(--blue950);
 }
 
