@@ -81,6 +81,10 @@ button {
   background-color: transparent;
 }
 
+input {
+  border: solid 1px var(--grey500)
+}
+
 /* ------------------- */
 /* Components          */
 /* ------------------- */
@@ -118,6 +122,16 @@ button {
   padding: 1rem;
   float: right;
   margin: 1rem 2rem;
+  cursor: pointer;
+}
+
+.errorMessage {
+  float: right;
+  color: var(--red500)
+}
+
+.inputError {
+  border: 1px solid red;
 }
 
 /* ------------------- */
@@ -144,9 +158,10 @@ button {
 .personalInfo p {
   color: var(--grey500);
   font-size: 1.125rem;
+  margin-bottom: 1rem;
 }
 
-.personalInfo form {
+.formInputFields {
   display: flex;
   flex-direction: column;
 }
@@ -156,7 +171,10 @@ button {
   line-height: 2rem;
   padding: .5rem 1rem;
   border-radius: 0.25rem;
-  border: solid 1px var(--grey500)
+}
+
+.personalInfo form input:focus {
+  border: var(--blue950);
 }
 
 .next-button-container {
