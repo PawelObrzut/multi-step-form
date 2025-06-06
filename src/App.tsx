@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useForm } from "react-hook-form"
 import StepButton from './components/StepButton'
 import Step1 from './components/Step1';
+import Step2 from './components/Step2';
 
 type Inputs = {
   name: string
@@ -11,6 +12,7 @@ type Inputs = {
 
 function App() {
   const [activeStep, setActiveStep] = useState<number>(1);
+  
   const { 
     register, 
     handleSubmit, 
@@ -23,6 +25,7 @@ function App() {
     console.log(data.name)
     console.log(data.email)
     console.log(data.phoneNumber)
+    setActiveStep((prev) => prev + 1)
   }
   return (
     <>
@@ -45,15 +48,20 @@ function App() {
             switch (activeStep) {
               case 1:
                 return <Step1 register={register} errors={errors} />
-                // case 2:
-                //   return <Step2 />
+                case 2:
+                  return <Step2 />
                 default:
                   return null
                 }
               })()}
           </section>
           <section className='next-button-container'>
-            <button type='submit' className='nextButton'>Next Step</button>
+            {activeStep > 1 && <button className='prevButton'>Go Back</button>}
+            <button 
+              type='submit' 
+              className='nextButton' >
+              Next Step
+            </button>
           </section>
         </form>
       </main>
