@@ -1,69 +1,63 @@
 import { useState } from 'react'
-import { useForm } from "react-hook-form"
+import { FormProvider, useForm } from "react-hook-form"
 import StepButton from './components/StepButton'
 import Step1 from './components/Step1';
 import Step2 from './components/Step2';
 
-type Inputs = {
+type FormValues = {
   name: string
   email: string
   phoneNumber: string
+  plan: 'arcade' | 'advanced' | 'pro',
+  billing: 'monthly' | 'yearly';
 }
 
 function App() {
   const [activeStep, setActiveStep] = useState<number>(1);
-  
-  const { 
-    register, 
-    handleSubmit, 
-    formState: { errors } 
-  } = useForm<Inputs>();
-  
-  const submitForm = (data: Inputs) => {
-    //TODO: create a state object variable to store all steps information.
-    //? does a user prefer to have a form cleared when advancing to the next step?
-    console.log(data.name)
-    console.log(data.email)
-    console.log(data.phoneNumber)
-    setActiveStep((prev) => prev + 1)
-  }
+
+  const nextStep = () => setActiveStep((prev) => prev + 1);
+  const prevStep = () => setActiveStep((prev) => prev - 1);
+
+  const onSubmit = (data: FormValues) => {
+    console.log("Final Data:", data);
+    alert("Submitted successfully!");
+  };
+
+  const methods = useForm<FormValues>({
+    mode: 'onTouched',
+    defaultValues: {
+      name: '',
+      email: '',
+      phoneNumber: '',
+      plan: 'arcade',
+      billing: 'monthly'
+    }
+  })
+
   return (
     <>
       <nav className='navigationSteps '>
         {
           [1, 2, 3, 4].map(step => (
-            <StepButton 
+            <StepButton
               key={step}
-              step={step} 
+              step={step}
               isActive={step === activeStep}
               onClick={() => setActiveStep(step)}
             />
           ))
         }
       </nav>
-      <main className=''>
-        <form onSubmit={handleSubmit(submitForm)} className='multiStepForm'>
-          <section className='formBody'>
-          {(() => {
-            switch (activeStep) {
-              case 1:
-                return <Step1 register={register} errors={errors} />
-                case 2:
-                  return <Step2 />
-                default:
-                  return null
-                }
-              })()}
-          </section>
-          <section className='next-button-container'>
-            {activeStep > 1 && <button className='prevButton'>Go Back</button>}
-            <button 
-              type='submit' 
-              className='nextButton' >
-              Next Step
-            </button>
-          </section>
-        </form>
+
+      <main>
+        <FormProvider {...methods}>
+          <form 
+            className='multiStepForm'
+            onSubmit={methods.handleSubmit(onSubmit)} >
+            {activeStep === 1 && <Step1 onNext={nextStep} />}
+            {/* {step === 2 && <Step2 onBack={prevStep} />} */}
+          </form>
+        </FormProvider>
       </main>
     </>
   )

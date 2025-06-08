@@ -120,8 +120,6 @@ input {
   color: var(--blue100);
   border-radius: .25rem;
   padding: 1rem;
-  /* float: right; */
-  /* margin: 1rem 2rem; */
   cursor: pointer;
 }
 
@@ -244,17 +242,13 @@ input:checked + .slider:before {
 
 .prevButton {
   color: var(--grey500);
+  visibility: hidden;
 }
 
 /* ------------------- */
 /* Layouts             */
 /* ------------------- */
 .multiStepForm {
-  display: flex;
-  flex-direction: column;
-}
-
-.formBody {
   display: flex;
   flex-direction: column;
 }
@@ -273,11 +267,15 @@ input:checked + .slider:before {
 
 }
 
+.formBody > section {
+  border: solid 1px green;
+}
+
 .formBody h1 {
   font-weight: 700;
 }
 
-.formBody > p {
+.formBody p {
   color: var(--grey500);
   font-size: 1.125rem;
   margin-bottom: 1rem;
@@ -285,6 +283,7 @@ input:checked + .slider:before {
 
 
 .formBody input {
+  width: 100%;
   margin-bottom: 1rem;
   line-height: 2rem;
   padding: .5rem 1rem;
@@ -295,7 +294,7 @@ input:checked + .slider:before {
   border: var(--blue950);
 }
 
-.next-button-container {
+.nav-buttons-container {
   background-color: var(--white);
   width: 100%;
   overflow: hidden;
