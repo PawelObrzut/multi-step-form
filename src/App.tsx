@@ -51,11 +51,20 @@ function App() {
 
       <main>
         <FormProvider {...methods}>
-          <form 
+          <form
             className='multiStepForm'
             onSubmit={methods.handleSubmit(onSubmit)} >
-            {activeStep === 1 && <Step1 onNext={nextStep} />}
-            {/* {step === 2 && <Step2 onBack={prevStep} />} */}
+            {(() => {
+              switch (activeStep) {
+                case 1:
+                  return <Step1 onNext={nextStep} />
+                case 2:
+                  return <Step2 onNext={nextStep} onPrev={prevStep} />
+                default:
+                  return null
+              }
+            })()}
+
           </form>
         </FormProvider>
       </main>

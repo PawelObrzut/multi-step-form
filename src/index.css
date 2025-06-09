@@ -139,7 +139,7 @@ input {
 }
 
 .planCard {
-  display: block;
+  display: flex;
   padding: 1rem 0.5rem;
   border: solid 1px var(--grey500);
   border-radius: 0.5rem;
@@ -245,6 +245,11 @@ input:checked + .slider:before {
   visibility: hidden;
 }
 
+.prevButton.visible {
+  visibility: visible;
+}
+
+
 /* ------------------- */
 /* Layouts             */
 /* ------------------- */
@@ -275,7 +280,11 @@ input:checked + .slider:before {
   font-weight: 700;
 }
 
-.formBody p {
+p {
+  color: var(--grey500);
+}
+
+.formBody > p {
   color: var(--grey500);
   font-size: 1.125rem;
   margin-bottom: 1rem;
