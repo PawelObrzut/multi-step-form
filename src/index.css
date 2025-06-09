@@ -341,7 +341,7 @@ p {
   min-width: 4rem;
 }
 
-.active {
+.addOnCard:has(input[type='checkbox']:checked) {
   border-color: var(--purple600);
   background-color: var(--blue50);
 }

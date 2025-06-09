@@ -7,6 +7,14 @@ type Props = {
 };
 
 const Step3 = ({ onNext, onPrev }: Props) => {
+  const {
+    register,
+    watch,
+  } = useFormContext();
+
+  const addOns = watch('addOns');
+
+
   return (
     <>
       <section className='formBody'>
@@ -15,10 +23,15 @@ const Step3 = ({ onNext, onPrev }: Props) => {
 
         <div className='checkboxContainer'>
           <div className='addOnCard'>
-            <input type='checkbox' id='onlineService' name='online service' value='online service' className='' />
+            <input
+              type='checkbox'
+              id='onlineService'
+              checked={addOns.onlineService}
+              {...register('addOns.onlineService')}
+            />
 
             <div className='addOnTitle'>
-              <label htmlFor='onlineService' className=''>Online service</label>
+              <label htmlFor='onlineService'>Online service</label>
               <p>Access to multiplayer games</p>
             </div>
 
@@ -27,11 +40,16 @@ const Step3 = ({ onNext, onPrev }: Props) => {
             </span>
           </div>
 
-          <div className='addOnCard active'>
-            <input type='checkbox' id='largeStorage' name='large storage' value='large storage' className='' />
+          <div className='addOnCard'>
+            <input 
+              type='checkbox' 
+              id='largeStorage'
+              checked={addOns.largeStorage}
+              {...register('addOns.largeStorage')}
+            />
 
             <div className='addOnTitle'>
-              <label htmlFor='largeStorage' className=''>Large storage</label>
+              <label htmlFor='largeStorage'>Large storage</label>
               <p>Extra 1TB of cloud save</p>
             </div>
 
@@ -41,10 +59,15 @@ const Step3 = ({ onNext, onPrev }: Props) => {
           </div>
 
           <div className='addOnCard'>
-            <input type='checkbox' id='customProfile' name='customizable profile' value='customizable profile' className='' />
+            <input
+              type='checkbox'
+              id='customProfile'
+              checked={addOns.customizableProfile}
+              {...register('addOns.customizableProfile')}
+            />
 
             <div className='addOnTitle'>
-              <label htmlFor='customProfile' className=''>Customizable profile</label>
+              <label htmlFor='customProfile'>Customizable profile</label>
               <p>Custom theme on your profile</p>
             </div>
 

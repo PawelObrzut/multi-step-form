@@ -6,11 +6,16 @@ import Step2 from './components/Step2';
 import Step3 from './components/Step3';
 
 type FormValues = {
-  name: string
-  email: string
-  phoneNumber: string
+  name: string,
+  email: string,
+  phoneNumber: string,
   plan: 'arcade' | 'advanced' | 'pro',
-  billing: 'monthly' | 'yearly';
+  billing: 'monthly' | 'yearly',
+  addOns: {
+    onlineService: boolean,
+    largeStorage: boolean,
+    customizableProfile: boolean
+  }
 }
 
 function App() {
@@ -31,7 +36,12 @@ function App() {
       email: '',
       phoneNumber: '',
       plan: 'arcade',
-      billing: 'monthly'
+      billing: 'monthly',
+      addOns: {
+        onlineService: false,
+        largeStorage: false,
+        customizableProfile: false
+      }
     }
   })
 
