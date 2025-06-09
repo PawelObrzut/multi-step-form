@@ -1,5 +1,6 @@
-import React from 'react'
 import { useFormContext } from "react-hook-form";
+import { PRICES } from '../constants/prices';
+import { useIsYearly } from "../hooks/useIsYearly";
 
 type Props = {
   onNext: () => void;
@@ -12,8 +13,8 @@ const Step3 = ({ onNext, onPrev }: Props) => {
     watch,
   } = useFormContext();
 
-  const addOns = watch('addOns');
-
+  const { addOns } = watch();
+  const isYearly = useIsYearly();
 
   return (
     <>
@@ -36,7 +37,7 @@ const Step3 = ({ onNext, onPrev }: Props) => {
             </div>
 
             <span className='addOnPrice'>
-              +$1/mo
+              {isYearly ? '+$10/yr' : '+$1/mo' }
             </span>
           </div>
 
@@ -54,7 +55,7 @@ const Step3 = ({ onNext, onPrev }: Props) => {
             </div>
 
             <span className='addOnPrice'>
-              +$1/mo
+              {isYearly ? '+$20/yr' : '+$2/mo' }
             </span>
           </div>
 
@@ -72,7 +73,7 @@ const Step3 = ({ onNext, onPrev }: Props) => {
             </div>
 
             <span className='addOnPrice'>
-              +$1/mo
+              {isYearly ? '+$20/yr' : '+$2/mo' }
             </span>
           </div>
         </div>

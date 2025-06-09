@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
+import { PRICES } from '../constants/prices';
+import { useIsYearly } from "../hooks/useIsYearly";
 
 type Props = {
   onNext: () => void;
@@ -13,23 +15,21 @@ const Step2 = ({ onNext, onPrev }: Props) => {
     watch,
   } = useFormContext();
 
-  const billing = watch('billing');
   const plan = watch('plan');
-
-  const isYearly = billing === 'yearly';
+  const isYearly = useIsYearly();
 
   const handlePlanToggle = () => {
     setValue('billing', isYearly ? 'monthly' : 'yearly');
   };
 
-  const getPrice = (monthly: number, yearly: number) =>
-    isYearly ? `$${yearly}/yr` : `$${monthly}/mo`;
+  const getPrice = (monthly: number, yearly: number) => {
+    return isYearly ? `$${yearly}/yr` : `$${monthly}/mo`;
+  }
 
   useEffect(() => {
     register('plan');
     register('billing');
   }, [register]);
-
 
   return (
     <>
@@ -47,7 +47,7 @@ const Step2 = ({ onNext, onPrev }: Props) => {
               <img src='/images/icon-arcade.svg' alt='Arcade icon' className='planIcon' />
               <div>
                 <h3>Arcade</h3>
-                <p>{getPrice(9, 90)}</p>
+                <p>{getPrice(PRICES.plans.arcade.monthly, PRICES.plans.arcade.yearly)}</p>
                 {isYearly && <span className="promoText">2 months free</span>}
               </div>
             </label>
@@ -61,7 +61,7 @@ const Step2 = ({ onNext, onPrev }: Props) => {
               <img src='/images/icon-advanced.svg' alt='Advanced icon' className='planIcon' />
               <div>
                 <h3>Advanced</h3>
-                <p>{getPrice(12, 120)}</p>
+                <p>{getPrice(PRICES.plans.advanced.monthly, PRICES.plans.advanced.yearly)}</p>
                 {isYearly && <span className="promoText">2 months free</span>}
               </div>
             </label>
@@ -75,7 +75,7 @@ const Step2 = ({ onNext, onPrev }: Props) => {
               <img src='/images/icon-pro.svg' alt='Pro icon' className='planIcon' />
               <div>
                 <h3>Pro</h3>
-                <p>{getPrice(15, 150)}</p>
+                <p>{getPrice(PRICES.plans.pro.monthly, PRICES.plans.pro.yearly)}</p>
                 {isYearly && <span className="promoText">2 months free</span>}
               </div>
             </label>

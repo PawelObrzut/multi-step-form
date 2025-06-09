@@ -4,8 +4,9 @@ import StepButton from './components/StepButton'
 import Step1 from './components/Step1';
 import Step2 from './components/Step2';
 import Step3 from './components/Step3';
+import Step4 from './components/Step4';
 
-type FormValues = {
+export type FormValues = {
   name: string,
   email: string,
   phoneNumber: string,
@@ -43,7 +44,7 @@ function App() {
         customizableProfile: false
       }
     }
-  })
+  });
 
   return (
     <>
@@ -73,6 +74,8 @@ function App() {
                   return <Step2 onNext={nextStep} onPrev={prevStep} />
                 case 3:
                   return <Step3 onNext={nextStep} onPrev={prevStep} />
+                case 4:
+                  return <Step4 onPrev={prevStep} />
                 default:
                   return null
               }

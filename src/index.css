@@ -129,7 +129,7 @@ input {
 }
 
 .inputError {
-  border: 1px solid red;
+  border: 1px solid var(--red500);
 }
 
 .planRadioContainer {
@@ -257,6 +257,7 @@ input:checked + .slider:before {
 .multiStepForm {
   display: flex;
   flex-direction: column;
+  height: 100vh;
 }
 
 .formBody {
@@ -270,7 +271,9 @@ input:checked + .slider:before {
   background-color: var(--white);
   display: flex;
   flex-direction: column;
-
+  flex-shrink: 0;
+  flex-grow: 0;
+  max-height: fit-content;
 }
 
 .formBody h1 {
@@ -307,6 +310,7 @@ p {
   display: flex;
   justify-content: space-between;
   padding: 1rem 2rem;
+  margin-top: auto;
 }
 
 .checkboxContainer {
@@ -339,11 +343,32 @@ p {
 
 .addOnPrice {
   min-width: 4rem;
+  color: var(--purple600);
 }
 
 .addOnCard:has(input[type='checkbox']:checked) {
   border-color: var(--purple600);
   background-color: var(--blue50);
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  row-gap: 1rem;
+}
+
+.price {
+  text-align: right;
+}
+
+.total-label {
+  font-weight: bold;
+}
+
+.total-price {
+  text-align: right;
+  font-weight: bold;
+  color: var(--purple600);
 }
 
 .b {
