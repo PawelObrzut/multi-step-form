@@ -247,6 +247,7 @@ input:checked + .slider:before {
 
 .prevButton.visible {
   visibility: visible;
+  cursor: pointer;
 }
 
 
@@ -270,10 +271,6 @@ input:checked + .slider:before {
   display: flex;
   flex-direction: column;
 
-}
-
-.formBody > section {
-  border: solid 1px green;
 }
 
 .formBody h1 {
@@ -310,6 +307,43 @@ p {
   display: flex;
   justify-content: space-between;
   padding: 1rem 2rem;
+}
+
+.checkboxContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.addOnCard {
+  display: flex;
+  border: solid 1px var(--grey500);
+  border-radius: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.addOnTitle {
+  flex-grow: 1;
+}
+
+.addOnCard > input {
+  width: 1.75rem;
+  height: 1.75rem;
+  accent-color: var(--purple600);
+  cursor: pointer;
+  margin: auto;
+}
+
+.addOnPrice {
+  min-width: 4rem;
+}
+
+.active {
+  border-color: var(--purple600);
+  background-color: var(--blue50);
 }
 
 .b {

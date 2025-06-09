@@ -3,6 +3,7 @@ import { FormProvider, useForm } from "react-hook-form"
 import StepButton from './components/StepButton'
 import Step1 from './components/Step1';
 import Step2 from './components/Step2';
+import Step3 from './components/Step3';
 
 type FormValues = {
   name: string
@@ -60,6 +61,8 @@ function App() {
                   return <Step1 onNext={nextStep} />
                 case 2:
                   return <Step2 onNext={nextStep} onPrev={prevStep} />
+                case 3:
+                  return <Step3 onNext={nextStep} onPrev={prevStep} />
                 default:
                   return null
               }
