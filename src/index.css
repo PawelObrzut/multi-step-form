@@ -354,15 +354,28 @@ p {
 .summary-grid {
   display: grid;
   grid-template-columns: 1fr auto;
+  align-items: center;
   row-gap: 1rem;
+  background-color: var(--blue50);
+  padding: 1rem;
+  color: var(--grey500);
+  border-radius: .75rem;
+}
+
+.plan {
+  color: var(--blue950);
+  font-weight: 500;
 }
 
 .price {
   text-align: right;
 }
 
-.total-label {
-  font-weight: bold;
+.total {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  color: var(--grey500);
 }
 
 .total-price {
@@ -373,6 +386,43 @@ p {
 
 .b {
   border: solid 1px red;
+}
+
+.submitButton {
+  background-color: var(--blue200);
+  padding: 1rem;
+  border-radius: .5rem;
+  cursor: pointer;
+}
+
+
+.summary-header-row > :first-child {
+  grid-column: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-header-row > .price {
+  grid-column: 2;
+  text-align: right;
+}
+
+.summary-header-row {
+  border-bottom: 1px solid var(--grey500);
+  padding-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+
+
+.changeButton {
+  padding: 0;
+  text-decoration: underline;
+  color: var(--grey500);
+  cursor: pointer;
 }
 
 @media (min-width: 525px) {

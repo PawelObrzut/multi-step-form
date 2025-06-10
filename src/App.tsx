@@ -24,6 +24,7 @@ function App() {
 
   const nextStep = () => setActiveStep((prev) => prev + 1);
   const prevStep = () => setActiveStep((prev) => prev - 1);
+  const goToStep2 = () => setActiveStep(2);
 
   const onSubmit = (data: FormValues) => {
     console.log("Final Data:", data);
@@ -75,7 +76,7 @@ function App() {
                 case 3:
                   return <Step3 onNext={nextStep} onPrev={prevStep} />
                 case 4:
-                  return <Step4 onPrev={prevStep} />
+                  return <Step4 onPrev={prevStep} onReviseBillinng={goToStep2} />
                 default:
                   return null
               }

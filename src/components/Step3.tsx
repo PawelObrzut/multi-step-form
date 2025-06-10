@@ -37,7 +37,7 @@ const Step3 = ({ onNext, onPrev }: Props) => {
             </div>
 
             <span className='addOnPrice'>
-              {isYearly ? '+$10/yr' : '+$1/mo' }
+              {isYearly ? `$${PRICES.addOns.onlineService.yearly}/yr` : `$${PRICES.addOns.onlineService.monthly}/mo` }
             </span>
           </div>
 
@@ -55,7 +55,7 @@ const Step3 = ({ onNext, onPrev }: Props) => {
             </div>
 
             <span className='addOnPrice'>
-              {isYearly ? '+$20/yr' : '+$2/mo' }
+              {isYearly ? `$${PRICES.addOns.largeStorage.yearly}/yr` : `$${PRICES.addOns.largeStorage.monthly}/mo` }
             </span>
           </div>
 
@@ -73,7 +73,7 @@ const Step3 = ({ onNext, onPrev }: Props) => {
             </div>
 
             <span className='addOnPrice'>
-              {isYearly ? '+$20/yr' : '+$2/mo' }
+              {isYearly ? `$${PRICES.addOns.customizableProfile.yearly}/yr` : `$${PRICES.addOns.customizableProfile.monthly}/mo` }
             </span>
           </div>
         </div>
