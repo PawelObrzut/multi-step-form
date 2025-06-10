@@ -1,22 +1,22 @@
 import { useState } from 'react'
 import { FormProvider, useForm } from "react-hook-form"
 import StepButton from './components/StepButton'
-import Step1 from './components/Step1';
-import Step2 from './components/Step2';
-import Step3 from './components/Step3';
-import Step4 from './components/Step4';
+import Step1 from './pages/Step1';
+import Step2 from './pages/Step2';
+import Step3 from './pages/Step3';
+import Step4 from './pages/Step4';
 
 export type FormValues = {
-  name: string,
-  email: string,
-  phoneNumber: string,
-  plan: 'arcade' | 'advanced' | 'pro',
-  billing: 'monthly' | 'yearly',
+  name: string;
+  email: string;
+  phoneNumber: string;
+  plan: 'arcade' | 'advanced' | 'pro';
+  billing: 'monthly' | 'yearly';
   addOns: {
     onlineService: boolean,
     largeStorage: boolean,
     customizableProfile: boolean
-  }
+  };
 }
 
 function App() {
@@ -49,7 +49,7 @@ function App() {
 
   return (
     <>
-      <nav className='navigationSteps '>
+      <nav className='stepsContainer'>
         {
           [1, 2, 3, 4].map(step => (
             <StepButton

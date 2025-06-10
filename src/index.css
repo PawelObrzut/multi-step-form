@@ -60,14 +60,6 @@ body {
   line-height: 1.5;
   min-height: 100vh;
 }
-
-/* make images easier to work with */
-img,
-picutre {
-  max-width: 100%;
-  display: block;
-}
-
 /* make form elements easier to work with */
 input,
 button,
@@ -76,6 +68,9 @@ select {
   font: inherit;
 }
 
+/* ------------------- */
+/* Global tag chages   */
+/* ------------------- */
 button {
   border: none;
   background-color: transparent;
@@ -85,42 +80,26 @@ input {
   border: solid 1px var(--grey500)
 }
 
+p {
+  color: var(--grey500);
+}
+
 /* ------------------- */
-/* Components          */
+/* Utility classes     */
 /* ------------------- */
-.stepButton {
-  color: var(--white);
-  height: 3em;
-  aspect-ratio: 1;
-  border: solid 2px var(--white);
-  border-radius: 50%;
-  margin-top: 3rem;
-  font-weight: 500;
+.cursor-pointer {
   cursor: pointer;
 }
 
-.stepButton.active {
-  color: var(--blue950);
-  background-color: var(--blue200);
-}
-
-.navigationSteps {
+.flex-column {
   display: flex;
-  justify-content: center;
-  gap: 1rem;
-  min-height: 240px;
-  background-image: url(../public/images/bg-sidebar-mobile.svg);
-  background-size: contain;
-  background-position: top center;
-  background-repeat: no-repeat;
+  flex-direction: column;
+  gap: var(--gap, 1rem);
 }
 
-.nextButton {
-  background-color: var(--blue950);
-  color: var(--blue100);
+.smooth-edge {
   border-radius: .25rem;
   padding: 1rem;
-  cursor: pointer;
 }
 
 .errorMessage {
@@ -132,12 +111,52 @@ input {
   border: 1px solid var(--red500);
 }
 
-.planRadioContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+.planCard h3 {
+  font-weight: 500;
 }
 
+.icon {
+  float: left;
+  padding: 0.5rem;
+  padding-right: 1rem;
+}
+
+/* ------------------- */
+/* Components          */
+/* ------------------- */
+/*! !*/
+.stepButton {
+  color: var(--white);
+  height: 3rem;
+  aspect-ratio: 1;
+  border: solid 2px var(--white);
+  border-radius: 50%;
+  margin-top: 3rem;
+  font-weight: 500;
+}
+
+.stepButton.active {
+  color: var(--blue950);
+  background-color: var(--blue200);
+}
+/*!  !*/
+.nextButton {
+  background-color: var(--blue950);
+  color: var(--blue100);
+  border-radius: .25rem;
+  padding: 0.5rem 1rem;
+}
+
+.prevButton {
+  color: var(--grey500);
+  visibility: hidden;
+}
+
+.prevButton.visible {
+  visibility: visible;
+  cursor: pointer;
+}
+/*!  !*/
 .planCard {
   display: flex;
   padding: 1rem 0.5rem;
@@ -150,29 +169,7 @@ input[type='radio']:checked + .planCard {
   border-color: var(--purple600);
   background-color: var(--blue100);
 }
-
-.planCard h3 {
-  font-weight: 500;
-}
-
-.planIcon {
-  float: left;
-  padding: 0.5rem;
-  padding-right: 1rem;
-}
-
-.paymentPlanContainer {
-  margin-top: 2rem;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  background-color: var(--blue100);
-  border-radius: .75rem;
-  padding: 1rem;
-  font-weight: 500;
-  color: var(--grey500);
-}
-
+/*!  !*/
 .switch {
   position: relative;
   display: inline-block;
@@ -210,14 +207,6 @@ input[type='radio']:checked + .planCard {
   transition: .4s;
 }
 
-/* input:checked + .slider {
-  background-color: #2196F3;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-} */
-
 input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
@@ -231,35 +220,28 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
-
-.paymentPlanContainer {
-  cursor: pointer;
-}
-
-.paymentPlanContainer .active {
-  color: var(--blue950)
-}
-
-.prevButton {
-  color: var(--grey500);
-  visibility: hidden;
-}
-
-.prevButton.visible {
-  visibility: visible;
-  cursor: pointer;
-}
-
-
+/*!  !*/
 /* ------------------- */
-/* Layouts             */
+/* Containers//Layouts */
 /* ------------------- */
+/*?  ?*/
+.stepsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 240px;
+  background-image: url(../public/images/bg-sidebar-mobile.svg);
+  background-size: contain;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+/*?  ?*/
 .multiStepForm {
   display: flex;
   flex-direction: column;
   height: 100vh;
 }
-
+/*?  ?*/
 .formBody {
   position: relative;
   top: -7.5rem;
@@ -275,13 +257,42 @@ input:checked + .slider:before {
   flex-grow: 0;
   max-height: fit-content;
 }
+/*?  ?*/
+.navButtonsContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background-color: var(--white);
+  overflow: hidden;
+  padding: 1rem 2rem;
+  margin-top: auto;
+}
+/*?  ?*/
+.planRadioContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+/*?  ?*/
+.paymentPlanContainer {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: var(--blue100);
+  border-radius: .75rem;
+  padding: 1rem;
+  font-weight: 500;
+  color: var(--grey500);
+}
+
+.paymentPlanContainer .active {
+  color: var(--blue950);
+}
+/*?  ?*/
 
 .formBody h1 {
   font-weight: 700;
-}
-
-p {
-  color: var(--grey500);
 }
 
 .formBody > p {
@@ -303,15 +314,6 @@ p {
   border: var(--blue950);
 }
 
-.nav-buttons-container {
-  background-color: var(--white);
-  width: 100%;
-  overflow: hidden;
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem 2rem;
-  margin-top: auto;
-}
 
 .checkboxContainer {
   display: flex;

@@ -1,9 +1,7 @@
-import React from 'react'
-
 type Props = {
-  step: number
-  isActive: boolean
-  onClick: () => void
+  step: number;
+  isActive: boolean;
+  onClick: () => void;
 }
 
 const StepButton = ({step, isActive, onClick}: Props) => {
