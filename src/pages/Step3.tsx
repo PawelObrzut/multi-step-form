@@ -1,6 +1,8 @@
 import { useFormContext } from "react-hook-form";
 import { PRICES } from '../constants/prices';
 import { useIsYearly } from "../hooks/useIsYearly";
+import CheckboxAddOnCard from "../components/CheckboxAddOnCard";
+import { getPrice } from "../utils/getPrice";
 
 type Props = {
   onNext: () => void;
@@ -8,13 +10,33 @@ type Props = {
 };
 
 const Step3 = ({ onNext, onPrev }: Props) => {
-  const {
-    register,
-    watch,
-  } = useFormContext();
-
+  const { watch } = useFormContext();
   const { addOns } = watch();
   const isYearly = useIsYearly();
+
+  const additions = [
+    {
+      id: 'onlineService',
+      title: 'Online service',
+      description: 'Access to multiplayer games',
+      monthly: PRICES.addOns.onlineService.monthly,
+      yearly: PRICES.addOns.onlineService.yearly,
+    },
+    {
+      id: 'largeStorage',
+      title: 'Large storage',
+      description: 'Extra 1TB of cloud save',
+      monthly: PRICES.addOns.largeStorage.monthly,
+      yearly: PRICES.addOns.largeStorage.yearly,
+    },
+    {
+      id: 'customizableProfile',
+      title: 'Customizable profile',
+      description: 'Custom theme on your profile',
+      monthly: PRICES.addOns.customizableProfile.monthly,
+      yearly: PRICES.addOns.customizableProfile.yearly,
+    }
+  ]
 
   return (
     <>
@@ -23,66 +45,24 @@ const Step3 = ({ onNext, onPrev }: Props) => {
         <p>Add-ons help enhance your gaming experience.</p>
 
         <div className='checkboxContainer'>
-          <div className='addOnCard'>
-            <input
-              type='checkbox'
-              id='onlineService'
-              checked={addOns.onlineService}
-              {...register('addOns.onlineService')}
-            />
-
-            <div className='addOnTitle'>
-              <label htmlFor='onlineService'>Online service</label>
-              <p>Access to multiplayer games</p>
-            </div>
-
-            <span className='addOnPrice'>
-              {isYearly ? `$${PRICES.addOns.onlineService.yearly}/yr` : `$${PRICES.addOns.onlineService.monthly}/mo` }
-            </span>
-          </div>
-
-          <div className='addOnCard'>
-            <input 
-              type='checkbox' 
-              id='largeStorage'
-              checked={addOns.largeStorage}
-              {...register('addOns.largeStorage')}
-            />
-
-            <div className='addOnTitle'>
-              <label htmlFor='largeStorage'>Large storage</label>
-              <p>Extra 1TB of cloud save</p>
-            </div>
-
-            <span className='addOnPrice'>
-              {isYearly ? `$${PRICES.addOns.largeStorage.yearly}/yr` : `$${PRICES.addOns.largeStorage.monthly}/mo` }
-            </span>
-          </div>
-
-          <div className='addOnCard'>
-            <input
-              type='checkbox'
-              id='customProfile'
-              checked={addOns.customizableProfile}
-              {...register('addOns.customizableProfile')}
-            />
-
-            <div className='addOnTitle'>
-              <label htmlFor='customProfile'>Customizable profile</label>
-              <p>Custom theme on your profile</p>
-            </div>
-
-            <span className='addOnPrice'>
-              {isYearly ? `$${PRICES.addOns.customizableProfile.yearly}/yr` : `$${PRICES.addOns.customizableProfile.monthly}/mo` }
-            </span>
-          </div>
+          {
+            additions.map(({ id, title, description, monthly, yearly }, index) => (
+              <CheckboxAddOnCard
+                key={id}
+                id={id}
+                label={title}
+                description={description}
+                price={getPrice(monthly, yearly, isYearly)}
+                isChecked={addOns[index]}
+              />
+            ))
+          }
         </div>
       </section>
 
-
-      <section className='nav-buttons-container'>
+      <section className='navButtonsContainer'>
         <button type='button' className='prevButton visible' onClick={onPrev}>Go Back</button>
-        <button type='button' className='nextButton' onClick={onNext}>Next</button>
+        <button type='button' className='nextButton cursor-pointer' onClick={onNext}>Next Step</button>
       </section>
     </>
   )

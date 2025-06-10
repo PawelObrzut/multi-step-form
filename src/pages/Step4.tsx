@@ -5,10 +5,10 @@ import React from "react";
 
 type Props = {
   onPrev: () => void;
-  onReviseBillinng: () => void
+  onReviseBilling: () => void
 };
 
-const Step4 = ({ onPrev, onReviseBillinng }: Props) => {
+const Step4 = ({ onPrev, onReviseBilling }: Props) => {
   const { watch } = useFormContext();
   const { plan, billing, addOns } = watch();
   const isYearly = useIsYearly();
@@ -37,7 +37,7 @@ const Step4 = ({ onPrev, onReviseBillinng }: Props) => {
               </span>
               <span
                 className='changeButton'
-                onClick={onReviseBillinng}
+                onClick={onReviseBilling}
               >
                 Change
               </span>
@@ -77,7 +77,7 @@ const Step4 = ({ onPrev, onReviseBillinng }: Props) => {
         </div>
       </section>
 
-      <section className='nav-buttons-container'>
+      <section className='navButtonsContainer'>
         <button type='button' className='prevButton visible' onClick={onPrev}>Go Back</button>
         <button type='submit' className='submitButton'>Confirm</button>
       </section>

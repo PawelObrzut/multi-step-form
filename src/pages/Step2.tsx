@@ -3,6 +3,7 @@ import { useFormContext } from "react-hook-form";
 import { PRICES } from '../constants/prices';
 import { useIsYearly } from "../hooks/useIsYearly";
 import RadioInputCard from "../components/RadioInputCard";
+import { getPrice } from "../utils/getPrice";
 
 type Props = {
   onNext: () => void;
@@ -23,9 +24,29 @@ const Step2 = ({ onNext, onPrev }: Props) => {
     setValue('billing', isYearly ? 'monthly' : 'yearly');
   };
 
-  const getPrice = (monthly: number, yearly: number) => {
-    return isYearly ? `$${yearly}/yr` : `$${monthly}/mo`;
-  }
+  const plans = [
+    {
+      id: 'arcade',
+      title: 'Arcade',
+      icon: 'icon-arcade',
+      monthly: PRICES.plans.arcade.monthly,
+      yearly: PRICES.plans.arcade.yearly,
+    },
+    {
+      id: 'advanced',
+      title: 'Advanced',
+      icon: 'icon-advanced',
+      monthly: PRICES.plans.advanced.monthly,
+      yearly: PRICES.plans.advanced.yearly,
+    },
+    {
+      id: 'pro',
+      title: 'Pro',
+      icon: 'icon-pro',
+      monthly: PRICES.plans.pro.monthly,
+      yearly: PRICES.plans.pro.yearly,
+    },
+  ];
 
   useEffect(() => {
     register('plan');
@@ -39,38 +60,21 @@ const Step2 = ({ onNext, onPrev }: Props) => {
         <p>You have the option of monthly or yearly billing.</p>
 
         <div className='planRadioContainer'>
-          <RadioInputCard
-            id='arcade'
-            title='Arcade'
-            type='radio'
-            icon='icon-arcade'
-            price={getPrice(PRICES.plans.arcade.monthly, PRICES.plans.arcade.yearly)}
-            isSelected={plan === 'arcade'}
-            showPromoText={isYearly}
-            onSelect={() => setValue('plan', 'arcade')}
-          />
-
-          <RadioInputCard
-            id='advanced'
-            title='Advanced'
-            type='radio'
-            icon='icon-advanced'
-            price={getPrice(PRICES.plans.advanced.monthly, PRICES.plans.advanced.yearly)}
-            isSelected={plan === 'advanced'}
-            showPromoText={isYearly}
-            onSelect={() => setValue('plan', 'advanced')}
-          />
-
-          <RadioInputCard
-            id='pro'
-            title='Pro'
-            type='radio'
-            icon='icon-pro'
-            price={getPrice(PRICES.plans.pro.monthly, PRICES.plans.pro.yearly)}
-            isSelected={plan === 'pro'}
-            showPromoText={isYearly}
-            onSelect={() => setValue('plan', 'pro')}
-          />
+          {
+            plans.map(({ id, title, icon, monthly, yearly }) => (
+              <RadioInputCard
+                key={id}
+                id={id}
+                title={title}
+                type='radio'
+                icon={icon}
+                price={getPrice(monthly, yearly, isYearly)}
+                isSelected={plan === id}
+                showPromoText={isYearly}
+                onSelect={() => setValue('plan', id)}
+              />
+            ))
+          }
         </div>
 
         <div className='paymentPlanContainer'>

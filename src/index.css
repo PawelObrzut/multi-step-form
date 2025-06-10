@@ -121,6 +121,28 @@ p {
   padding-right: 1rem;
 }
 
+.formBody h1 {
+  font-weight: 700;
+}
+
+.formBody > p {
+  color: var(--grey500);
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+}
+
+
+.formBody input {
+  width: 100%;
+  margin-bottom: 1rem;
+  line-height: 2rem;
+  padding: .5rem 1rem;
+  border-radius: 0.25rem;
+}
+
+.formBody input:focus {
+  border: var(--blue950);
+}
 /* ------------------- */
 /* Components          */
 /* ------------------- */
@@ -291,28 +313,8 @@ input:checked + .slider:before {
 }
 /*?  ?*/
 
-.formBody h1 {
-  font-weight: 700;
-}
-
-.formBody > p {
-  color: var(--grey500);
-  font-size: 1.125rem;
-  margin-bottom: 1rem;
-}
 
 
-.formBody input {
-  width: 100%;
-  margin-bottom: 1rem;
-  line-height: 2rem;
-  padding: .5rem 1rem;
-  border-radius: 0.25rem;
-}
-
-.formBody input:focus {
-  border: var(--blue950);
-}
 
 
 .checkboxContainer {

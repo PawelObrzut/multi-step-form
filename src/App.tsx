@@ -76,7 +76,7 @@ function App() {
                 case 3:
                   return <Step3 onNext={nextStep} onPrev={prevStep} />
                 case 4:
-                  return <Step4 onPrev={prevStep} onReviseBillinng={goToStep2} />
+                  return <Step4 onPrev={prevStep} onReviseBilling={goToStep2} />
                 default:
                   return null
               }
