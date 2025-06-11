@@ -7,11 +7,11 @@ type Props = {
 const NavButtons = ({ onPrev, onNext, submit = false }: Props) => {
   return (
     <>
-      {onPrev && (<button type='button' onClick={onPrev} className='prevButton'>Go Back</button>)}
+      {onPrev && (<button type='button' onClick={onPrev} className='color-grey-500'>Go Back</button>)}
       {submit ?
-        (<button type='submit' className='submitButton'>Confirm</button>)
+        (<button type='submit' className='submit-button'>Confirm</button>)
         :
-        (<button type='button' onClick={onNext} className='nextButton'>Next Step</button>)}
+        (<button type='button' onClick={onNext} className='next-button'>Next Step</button>)}
     </>
   )
 }

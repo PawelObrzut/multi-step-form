@@ -1,13 +1,13 @@
 type Props = {
   step: number;
   isActive: boolean;
-  onClick: () => void;
+  onClick: () => void
 }
 
 const StepButton = ({step, isActive, onClick}: Props) => {
   return (
     <button 
-      className={`stepButton ${isActive ? 'active' : ''}`}
+      className={`step-button ${isActive ? 'active' : ''}`}
       onClick={onClick}
     >
       {step}

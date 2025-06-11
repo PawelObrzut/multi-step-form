@@ -8,7 +8,7 @@ const AddOnSummaryRow = ({ label, price, isYearly }: Props) => {
   return (
     <>
       <div>{label}</div>
-      <div className="price">+${price}/{isYearly ? 'yr' : 'mo'}</div>
+      <div>+${price}/{isYearly ? 'yr' : 'mo'}</div>
     </>
   )
 }

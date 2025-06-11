@@ -20,17 +20,17 @@ const Step4 = ({ onPrev, onReviseBilling }: Props) => {
 
   return (
     <>
-      <section className='formBody'>
+      <section className='form-body flex flex-column gap-1'>
         <h1>Finishing up</h1>
         <p>Double-check everything looks OK before confirming.</p>
 
-        <div className='summaryContainer'>
+        <div className='summary-container'>
           <div className='summary-header-row'>
             <div>
-              <span className='plan'> {styleLabel(plan)} ({styleLabel(billing)}) </span>
-              <span className='changeButton' onClick={onReviseBilling}> Change </span>
+              <span className='color-blue-950 font-500'> {styleLabel(plan)} ({styleLabel(billing)}) </span>
+              <span className='change-button cursor-pointer color-grey-500' onClick={onReviseBilling}> Change </span>
             </div>
-            <div className='price'>
+            <div className='color-blue-950 font-500'>
               ${planPrice}/{isYearly ? 'yr' : 'mo'}
             </div>
           </div>
@@ -49,7 +49,7 @@ const Step4 = ({ onPrev, onReviseBilling }: Props) => {
           })}
         </div>
 
-        <div className='total'>
+        <div className='total flex'>
           <div>Total ({isYearly ? 'per year' : 'per month'})</div>
           <div className='total-price'>
             ${getTotalPrice(plan, billing, addOns)}/{isYearly ? 'yr' : 'mo'}
@@ -57,7 +57,7 @@ const Step4 = ({ onPrev, onReviseBilling }: Props) => {
         </div>
       </section>
 
-      <section className='navButtonsContainer'>
+      <section className='nav-buttons-container flex'>
         <NavButtons onPrev={onPrev} submit={true} />
       </section>
     </>

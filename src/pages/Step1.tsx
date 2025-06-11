@@ -16,8 +16,8 @@ const Step1 = ({ onNext }: Props) => {
 
   return (
     <>
-      <section className="formBody">
-        <h1>Personal Info</h1>
+      <section className="form-body flex flex-column gap-1">
+        <h1 className='font-700'>Personal Info</h1>
         <p>Please provide your name, email address, and phone number.</p>
 
         <TextInput
@@ -48,7 +48,7 @@ const Step1 = ({ onNext }: Props) => {
         />
       </section>
 
-      <section className='navButtonsContainer'>
+      <section className='nav-buttons-container flex'>
         <div />
         <NavButtons onNext={handleNext}/>
       </section>

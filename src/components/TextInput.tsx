@@ -19,12 +19,12 @@ const TextInput = ({ id, label, type, placeholder, validation }: Props) => {
   return (
     <div>
       <label htmlFor={id}>{label}</label>
-      { error?.message && <span className='errorMessage'>{String(error.message)}</span> }
+      { error?.message && <span className='error-message'>{String(error.message)}</span> }
       <input
         type={type}
         id={id}
         placeholder={placeholder}
-        className={error ? 'inputError' : ''}
+        className={error ? 'input-error' : ''}
         {...register(id, validation)}
       />
     </div>

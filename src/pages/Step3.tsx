@@ -17,11 +17,11 @@ const Step3 = ({ onNext, onPrev }: Props) => {
 
   return (
     <>
-      <section className='formBody'>
+      <section className='form-body flex flex-column gap-1'>
         <h1>Pick add-ons.</h1>
         <p>Add-ons help enhance your gaming experience.</p>
 
-        <div className='checkboxContainer'>
+        <div className='flex flex-column gap-05'>
           {
             ADDONS.map(({ id, title, description, monthly, yearly }, index) => (
               <CheckboxAddOnCard
@@ -37,7 +37,7 @@ const Step3 = ({ onNext, onPrev }: Props) => {
         </div>
       </section>
 
-      <section className='navButtonsContainer'>
+      <section className='nav-buttons-container flex'>
         <NavButtons onPrev={onPrev} onNext={onNext} />
       </section>
     </>

@@ -32,11 +32,11 @@ const Step2 = ({ onNext, onPrev }: Props) => {
 
   return (
     <>
-      <section className='formBody'>
+      <section className='form-body flex flex-column gap-1'>
         <h1>Select your plan</h1>
         <p>You have the option of monthly or yearly billing.</p>
 
-        <div className='planRadioContainer'>
+        <div className='flex flex-column gap-05'>
           {
             PLANS.map(({ id, title, icon, monthly, yearly }) => (
               <RadioInputCard
@@ -54,7 +54,7 @@ const Step2 = ({ onNext, onPrev }: Props) => {
           }
         </div>
 
-        <div className='paymentPlanContainer'>
+        <div className='payment-plan-pontainer flex font-500'>
           <div
             className={`${isYearly ? '' : 'active'} cursor-pointer`}
             onClick={() => setValue('billing', 'monthly')}
@@ -80,7 +80,7 @@ const Step2 = ({ onNext, onPrev }: Props) => {
         </div>
       </section>
 
-      <section className='navButtonsContainer'>
+      <section className='nav-buttons-container flex'>
         <NavButtons onPrev={onPrev} onNext={onNext} />
       </section>
     </>

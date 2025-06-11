@@ -22,16 +22,16 @@ const RadioInputCard = ({ id, title, type, icon, price, isSelected, onSelect, sh
       />
       <label
         htmlFor={id}
-        className={`planCard ${isSelected ? 'selected' : ''}`}
+        className={`plan-card flex cursor-pointer ${isSelected ? 'selected' : ''}`}
       >
         <img
           src={`/images/${icon}.svg`}
           alt={`${title} icon`}
           className='icon' />
         <div>
-          <h3>{title}</h3>
+          <h3 className='font-500'>{title}</h3>
           <p>{price}</p>
-          {showPromoText && <span className="promoText">2 months free</span>}
+          {showPromoText && <span>2 months free</span>}
         </div>
       </label>
     </div>

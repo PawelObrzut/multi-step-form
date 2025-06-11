@@ -12,18 +12,18 @@ const CheckboxAddOnCard = ({ label, description, price, id, isChecked }: Props) 
   const { register } = useFormContext();
 
   return (
-    <div className='addOnCard'>
+    <div className='add-on-card flex gap-1'>
       <input
         type='checkbox'
         id={id}
         checked={isChecked}
         {...register('addOns.' + id)}
       />
-      <div className='addOnTitle'>
+      <div className='flex-grow-1'>
         <label htmlFor={id} className='cursor-pointer'>{label}</label>
         <p>{description}</p>
       </div>
-      <span className='addOnPrice'>
+      <span className='add-on-price'>
         {price}
       </span>
     </div>
