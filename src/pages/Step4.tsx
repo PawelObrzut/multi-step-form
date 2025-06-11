@@ -1,27 +1,22 @@
 import { useFormContext } from "react-hook-form";
-import { PRICES } from '../constants/prices';
+import { PRICES } from '../constants/subscriptionData';
 import { useIsYearly } from "../hooks/useIsYearly";
-import React from "react";
+import { styleLabel } from "../utils/styleLabel";
+import { getTotalPrice } from "../utils/getTotalPrice";
+import AddOnSummaryRow from "../components/AddOnSummaryRow";
+import type { FormValues } from "../App";
+import NavButtons from "../components/NavButtons";
 
 type Props = {
   onPrev: () => void;
-  onReviseBilling: () => void
+  onReviseBilling: () => void;
 };
 
 const Step4 = ({ onPrev, onReviseBilling }: Props) => {
   const { watch } = useFormContext();
-  const { plan, billing, addOns } = watch();
+  const { plan, billing, addOns } = watch() as FormValues;
   const isYearly = useIsYearly();
   const planPrice = PRICES.plans[plan][billing];
-
-  const styleLabel = (label: string): string => {
-    return label
-      .replace(/([a-z])([A-Z])/g, '$1 $2')
-      .split(' ')
-      .map(word => word.charAt(0).toLowerCase() + word.slice(1))
-      .join(' ')
-      .replace(/^./, c => c.toUpperCase());
-  };
 
   return (
     <>
@@ -29,18 +24,11 @@ const Step4 = ({ onPrev, onReviseBilling }: Props) => {
         <h1>Finishing up</h1>
         <p>Double-check everything looks OK before confirming.</p>
 
-        <div className='summary-grid'>
+        <div className='summaryContainer'>
           <div className='summary-header-row'>
             <div>
-              <span className='plan'>
-                {styleLabel(plan)} ({styleLabel(billing)})
-              </span>
-              <span
-                className='changeButton'
-                onClick={onReviseBilling}
-              >
-                Change
-              </span>
+              <span className='plan'> {styleLabel(plan)} ({styleLabel(billing)}) </span>
+              <span className='changeButton' onClick={onReviseBilling}> Change </span>
             </div>
             <div className='price'>
               ${planPrice}/{isYearly ? 'yr' : 'mo'}
@@ -48,38 +36,29 @@ const Step4 = ({ onPrev, onReviseBilling }: Props) => {
           </div>
 
           {Object.entries(addOns).map(([key, value]) => {
-            if (value) {
-              return (
-                <React.Fragment key={key}>
-                  <div>{styleLabel(key)}</div>
-                  <div className='price'>
-                    +${PRICES.addOns[key][billing]}/{isYearly ? 'yr' : 'mo'}
-                  </div>
-                </React.Fragment>
-              );
-            }
-            return null;
+            if (!value) return null
+            const price = PRICES.addOns[key as keyof typeof PRICES.addOns][billing];
+            return (
+              <AddOnSummaryRow
+                key={key}
+                label={styleLabel(key)}
+                isYearly={isYearly}
+                price={price}
+              />
+            );
           })}
         </div>
-
 
         <div className='total'>
           <div>Total ({isYearly ? 'per year' : 'per month'})</div>
           <div className='total-price'>
-            ${planPrice + Object.entries(addOns).reduce((acc, [key, value]) => {
-              if (value) {
-                const price = PRICES.addOns[key][billing];
-                acc += price;
-              }
-              return acc;
-            }, 0)}/{isYearly ? 'yr' : 'mo'}
+            ${getTotalPrice(plan, billing, addOns)}/{isYearly ? 'yr' : 'mo'}
           </div>
         </div>
       </section>
 
       <section className='navButtonsContainer'>
-        <button type='button' className='prevButton visible' onClick={onPrev}>Go Back</button>
-        <button type='submit' className='submitButton'>Confirm</button>
+        <NavButtons onPrev={onPrev} submit={true} />
       </section>
     </>
   )

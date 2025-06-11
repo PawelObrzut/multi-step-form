@@ -1,5 +1,6 @@
 import { useFormContext } from "react-hook-form";
 import TextInput from "../components/TextInput";
+import NavButtons from "../components/NavButtons";
 
 type Props = {
   onNext: () => void;
@@ -48,8 +49,8 @@ const Step1 = ({ onNext }: Props) => {
       </section>
 
       <section className='navButtonsContainer'>
-        <button className='prevButton'>Go Back</button>
-        <button type='button' className='nextButton cursor-pointer' onClick={handleNext}>Next Step</button>
+        <div />
+        <NavButtons onNext={handleNext}/>
       </section>
     </>
   )

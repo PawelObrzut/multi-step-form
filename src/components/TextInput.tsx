@@ -1,6 +1,6 @@
 import { useFormContext } from "react-hook-form";
 
-type TextInputProps = {
+type Props = {
   id: string;
   label: string;
   type: string;
@@ -8,7 +8,7 @@ type TextInputProps = {
   validation: object;
 };
 
-const TextInput = ({ id, label, type, placeholder, validation }: TextInputProps) => {
+const TextInput = ({ id, label, type, placeholder, validation }: Props) => {
   const {
     register,
     formState: { errors },

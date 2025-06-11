@@ -20,7 +20,7 @@ const CheckboxAddOnCard = ({ label, description, price, id, isChecked }: Props) 
         {...register('addOns.' + id)}
       />
       <div className='addOnTitle'>
-        <label htmlFor={id}>{label}</label>
+        <label htmlFor={id} className='cursor-pointer'>{label}</label>
         <p>{description}</p>
       </div>
       <span className='addOnPrice'>
