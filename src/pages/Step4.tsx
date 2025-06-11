@@ -21,7 +21,7 @@ const Step4 = ({ onPrev, onReviseBilling }: Props) => {
   return (
     <>
       <section className='form-body flex flex-column gap-1'>
-        <h1>Finishing up</h1>
+        <h1 className='font-700'>Finishing up</h1>
         <p>Double-check everything looks OK before confirming.</p>
 
         <div className='summary-container'>

@@ -1,17 +1,24 @@
 type Props = {
-  step: number;
+  index: number;
+  step: string;
   isActive: boolean;
   onClick: () => void
 }
 
-const StepButton = ({step, isActive, onClick}: Props) => {
+const StepButton = ({ index, step, isActive, onClick }: Props) => {
   return (
-    <button 
-      className={`step-button ${isActive ? 'active' : ''}`}
-      onClick={onClick}
-    >
-      {step}
-    </button>
+    <div className='step-button-container'>
+      <button
+        className={`step-button ${isActive ? 'active' : ''}`}
+        onClick={onClick}
+      >
+        {index + 1}
+      </button>
+      <div className='steps-info'>
+        <h5 className='color-grey-500'>STEP {index + 1}</h5>
+        <h5 className='color-white font-700'>{step.toUpperCase()}</h5>
+      </div>
+    </div>
   )
 }
 

@@ -18,7 +18,7 @@ const Step3 = ({ onNext, onPrev }: Props) => {
   return (
     <>
       <section className='form-body flex flex-column gap-1'>
-        <h1>Pick add-ons.</h1>
+        <h1 className='font-700'>Pick add-ons.</h1>
         <p>Add-ons help enhance your gaming experience.</p>
 
         <div className='flex flex-column gap-05'>

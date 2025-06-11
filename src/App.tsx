@@ -47,48 +47,51 @@ function App() {
   });
 
   return (
-    <>
-      <nav className='steps-container flex gap-1'>
-        {
-          [1, 2, 3, 4].map(step => (
-            <StepButton
-              key={step}
-              step={step}
-              isActive={step === activeStep}
-              onClick={() => setActiveStep(step)}
-            />
-          ))
-        }
-      </nav>
+    <div className='app-container'>
+      <div className='form-wrapper'>
+        <nav className='steps-container flex gap-1'>
+          {
+            ['your info', 'select plan', 'add-ons', 'summary'].map((step, index) => (
+              <StepButton
+                index={index}
+                key={step}
+                step={step}
+                isActive={index + 1 === activeStep}
+                onClick={() => setActiveStep(index + 1)}
+              />
+            ))
+          }
+        </nav>
 
-      <main>
-        {isFinished ? (
-          <div>
-            <Step5 />
-          </div>
-        ) : (
-          <FormProvider {...methods}>
-            <form onSubmit={methods.handleSubmit(onSubmit)} >
-              {(() => {
-                switch (activeStep) {
-                  case 1:
-                    return <Step1 onNext={nextStep} />
-                  case 2:
-                    return <Step2 onNext={nextStep} onPrev={prevStep} />
-                  case 3:
-                    return <Step3 onNext={nextStep} onPrev={prevStep} />
-                  case 4:
-                    return <Step4 onPrev={prevStep} onReviseBilling={goToStep2} />
-                  default:
-                    return null
-                }
-              })()}
+        <main className='form-content'>
+          {isFinished ? (
+            <div>
+              <Step5 />
+            </div>
+          ) : (
+            <FormProvider {...methods}>
+              <form onSubmit={methods.handleSubmit(onSubmit)} >
+                {(() => {
+                  switch (activeStep) {
+                    case 1:
+                      return <Step1 onNext={nextStep} />
+                    case 2:
+                      return <Step2 onNext={nextStep} onPrev={prevStep} />
+                    case 3:
+                      return <Step3 onNext={nextStep} onPrev={prevStep} />
+                    case 4:
+                      return <Step4 onPrev={prevStep} onReviseBilling={goToStep2} />
+                    default:
+                      return null
+                  }
+                })()}
 
-            </form>
-          </FormProvider>
-        )}
-      </main >
-    </>
+              </form>
+            </FormProvider>
+          )}
+        </main>
+      </div>
+    </div>
   )
 }
 

@@ -33,7 +33,7 @@ const Step2 = ({ onNext, onPrev }: Props) => {
   return (
     <>
       <section className='form-body flex flex-column gap-1'>
-        <h1>Select your plan</h1>
+        <h1 className='font-700'>Select your plan</h1>
         <p>You have the option of monthly or yearly billing.</p>
 
         <div className='flex flex-column gap-05'>
@@ -54,7 +54,7 @@ const Step2 = ({ onNext, onPrev }: Props) => {
           }
         </div>
 
-        <div className='payment-plan-pontainer flex font-500'>
+        <div className='payment-plan-container flex font-500'>
           <div
             className={`${isYearly ? '' : 'active'} cursor-pointer`}
             onClick={() => setValue('billing', 'monthly')}
