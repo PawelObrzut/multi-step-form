@@ -1,54 +1,28 @@
-# React + TypeScript + Vite
+# Multi Step Form from Frontmentor
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An advanced challenge from Frontmentor which I completed using a typescript react vite setup.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+Responsive layout, which required a solid structure to keep the project clean and maintanable.
+From with multiple types of inputs, validation, variations and a summary.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Refactoring
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+With a project like this one learns to devote a significant attention to clean up the code. Make every component be responsible for just one thing, put the logic in utils functions and cetralize data. A react-form-hook proved to be a great choice to archive required functionality.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+![](imgReadme/desktop-step-1.jpg)
+![](imgReadme/mobile-step-3.jpg)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Technologies
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+  * [Typescript](https://www.typescriptlang.org/)
+  * [React](https://reactjs.org/)
+  * [React-Hook-Form](https://react-hook-form.com/)
+
+## Launch
+
+To get started clone the repository and install the dependencies. Inside project directory start localhost server
+
+> npm run dev
