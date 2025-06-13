@@ -28,8 +28,8 @@ function App() {
   const prevStep = () => setActiveStep((prev) => prev - 1);
   const goToStep2 = () => setActiveStep(2);
 
-  const onSubmit = () => setIsFinished((prev) => !prev);
-
+  const onSubmit = () => setIsFinished(true);
+  
   const methods = useForm<FormValues>({
     mode: 'onTouched',
     defaultValues: {

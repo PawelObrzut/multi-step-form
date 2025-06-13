@@ -8,6 +8,6 @@
     "target": "ESNext",
     "module": "ESNext",
     "jsx": "react-jsx",
-    "types": ["jest", "node"]
+    "types": ["jest", "node", "cypress"]
   }
 }
