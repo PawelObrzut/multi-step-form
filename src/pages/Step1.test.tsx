@@ -24,7 +24,7 @@ const Wrapper = ({ children }: { children: React.ReactNode }) => {
   return <FormProvider {...methods}>{children}</FormProvider>
 }
 
-describe('Step1 validation', () => {
+describe('Step1 - Your info - validation', () => {
   let user: ReturnType<typeof userEvent.setup>
   let onNext: jest.Mock
 
@@ -50,5 +50,14 @@ describe('Step1 validation', () => {
     await user.click(screen.getByRole('button', { name: /next step/i }))
     expect(await screen.findByText(/enter a valid email address/i)).toBeInTheDocument()
     expect(onNext).not.toHaveBeenCalled()
+  })
+
+  test('onNext gets called only when all 3 inputs are correctly filled', async () => {
+    expect(await screen.findByText(/personal info/i)).toBeInTheDocument()
+    await user.type(screen.getByLabelText(/name/i), 'John Snow')
+    await user.type(screen.getByLabelText(/email address/i), 'JohnSnow@gmail.com')
+    await user.type(screen.getByLabelText(/phone number/i), '111333222')
+    await user.click(screen.getByRole('button', { name: /next step/i }))
+    expect(onNext).toHaveBeenCalled()
   })
 })
