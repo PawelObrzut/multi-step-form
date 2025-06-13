@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import Step2 from './Step2'
+import Step3 from './Step3'
 import { FormProvider, useForm } from 'react-hook-form'
 import type { FormValues } from '../App'
 
@@ -24,7 +24,7 @@ const Wrapper = ({ children }: { children: React.ReactNode }) => {
   return <FormProvider {...methods}>{children}</FormProvider>
 }
 
-describe('Step2 - Select your plan', () => {
+describe('Step3 - Pick add-ons', () => {
   let user: ReturnType<typeof userEvent.setup>
   let onNext: jest.Mock
   let onPrev: jest.Mock
@@ -36,35 +36,35 @@ describe('Step2 - Select your plan', () => {
 
     render(
       <Wrapper>
-        <Step2 onPrev={onPrev} onNext={onNext} />
+        <Step3 onNext={onNext} onPrev={onPrev} />
       </Wrapper>
     )
   })
 
-  test('"arcade" is selected by default', async () => {
-    expect(screen.getByText(/arcade/i).closest('label')).toHaveClass('selected')
+  test('renders the correct heading and description', () => {
+    expect(screen.getByRole('heading', { name: /pick add-ons/i })).toBeInTheDocument()
+    expect(screen.getByText(/enhance your gaming experience/i)).toBeInTheDocument()
   })
 
-  test('may select only 1 of 3 available options', async () => {
-    await user.click(screen.getByText(/pro/i))
-    expect(screen.getByText(/pro/i).closest('label')).toHaveClass('selected')
-    expect(screen.getByText(/arcade/i).closest('label')).not.toHaveClass('selected')
-    expect(screen.getByText(/advanced/i).closest('label')).not.toHaveClass('selected')
+  test('renders all available add-ons with labels and prices', () => {
+    expect(screen.getByText(/online service/i).closest('label')).toBeInTheDocument()
+    expect(screen.getByText(/large storage/i).closest('label')).toBeInTheDocument()
+    expect(screen.getByText(/customizable profile/i).closest('label')).toBeInTheDocument()
   })
 
-  test('toggles billing between monthly and yearly', async () => {
-    const monthlyDiv = screen.getByTestId('monthly-select-div')
-    console.log('monthly', monthlyDiv.textContent)
-    const yearlyDiv = screen.getByTestId('yearly-select-div')
 
-    expect(monthlyDiv).toHaveClass('active')
+  test('can check and uncheck add-ons', async () => {
+    const onlineServiceCheckbox = screen.getByLabelText(/online service/i) as HTMLInputElement
+    expect(onlineServiceCheckbox.checked).toBe(false)
 
-    await user.click(yearlyDiv)
-    expect(monthlyDiv).not.toHaveClass('active')
-    expect(yearlyDiv).toHaveClass('active')
+    await user.click(onlineServiceCheckbox)
+    expect(onlineServiceCheckbox.checked).toBe(true)
+
+    await user.click(onlineServiceCheckbox)
+    expect(onlineServiceCheckbox.checked).toBe(false)
   })
 
-  test('GoBack and NextStep buttons navigate properly', async () => {
+  test('calls onNext and onPrev when buttons are clicked', async () => {
     const nextButton = screen.getByRole('button', { name: /next step/i })
     const backButton = screen.getByRole('button', { name: /go back/i })
 

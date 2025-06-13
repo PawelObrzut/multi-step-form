@@ -51,7 +51,7 @@ const Step4 = ({ onPrev, onReviseBilling }: Props) => {
 
         <div className='total flex'>
           <div>Total ({isYearly ? 'per year' : 'per month'})</div>
-          <div className='total-price'>
+          <div data-testid='total-price' className='total-price'>
             ${getTotalPrice(plan, billing, addOns)}/{isYearly ? 'yr' : 'mo'}
           </div>
         </div>

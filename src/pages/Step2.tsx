@@ -58,6 +58,7 @@ const Step2 = ({ onNext, onPrev }: Props) => {
           <div
             className={`${isYearly ? '' : 'active'} cursor-pointer`}
             onClick={() => setValue('billing', 'monthly')}
+            data-testid='monthly-select-div'
           >
             Monthly
           </div>
@@ -74,6 +75,7 @@ const Step2 = ({ onNext, onPrev }: Props) => {
           <div
             className={`${isYearly ? 'active' : ''} cursor-pointer`}
             onClick={() => setValue('billing', 'yearly')}
+            data-testid='yearly-select-div'
           >
             Yearly
           </div>
